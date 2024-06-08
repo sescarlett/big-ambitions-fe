@@ -46,7 +46,7 @@ jobs:
 
       - name: Build �️�
         run: |
-          npm run build:prod
+          npm run build
 
       - name: Google Auth
         uses: google-github-actions/auth@v0.4.0

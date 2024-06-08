@@ -6,7 +6,7 @@
   "scripts": {
     "dev:vite": "vite --open",
     "start": "react-scripts start",
-    "build": "vite build",
+    "build": "vite build --mode production-website",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
