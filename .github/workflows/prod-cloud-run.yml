@@ -1,0 +1,92 @@
+on:
+  push:
+    branches:
+      - main
+
+name: PROD Build and Deploy to Cloud Run
+env:
+  REGISTRY_FOLDER_NAME: ${{ vars.REGISTRY_FOLDER_NAME }}
+  PROJECT_ID: ${{ secrets.PROJECT_ID }}
+  GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+  SERVICE: tiered-web-app-fe
+  CLOUD_RUN_SA: ${{ secrets.CLOUD_RUN_SA }}
+  REACT_APP_BASE_API_URL: ${{ vars.VITE_BASE_WS_URL }}
+  REGION: us-central1
+  CI: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: prod
+
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set short git commit SHA
+        id: vars
+        run: |
+          calculatedSha=$(git rev-parse --short ${{ github.sha }})
+          echo "COMMIT_SHORT_SHA=$calculatedSha" >> $GITHUB_ENV
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: NPM Install �
+        run: |
+          npm install
+
+      - name: Build �️�
+        run: |
+          npm run build:prod
+
+      - name: Google Auth
+        uses: google-github-actions/auth@v0.4.0
+        with:
+          credentials_json: ${{ env.GOOGLE_CREDENTIALS }}
+
+      - name: Setup Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+
+      - name: Authorize buildpack/Docker push
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
+
+      - name: Build, tag and push container
+        id: build-image
+        uses: docker/build-push-action@v3
+        with:
+          platforms: linux/amd64
+          context: .
+          push: true
+          tags: |
+            us-central1-docker.pkg.dev/big-ambitions-companion/scarlett-apps-images-prod/tiered-web-app-fe:${{ steps.read_property.outputs.git-commit-id-describe }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Deploy to Cloud Run
+        run: |-
+          gcloud run deploy ${{ env.SERVICE }} \
+            --project ${{ env.PROJECT_ID }} \
+            --region ${{ env.REGION }} \
+            --image us-central1-docker.pkg.dev/big-ambitions-companion/scarlett-apps-images-prod/tiered-web-app-fe:${{ env.COMMIT_SHORT_SHA }} \
+            --port 80 \
+            --min-instances 0 \
+            --max-instances 2 \
+            --memory 1Gi \
+            --concurrency 100 \
+            --platform "managed" \
+            --allow-unauthenticated \
+            --ingress internal-and-cloud-load-balancing \
+            --service-account ${{ env.CLOUD_RUN_SA }} \
+            --quiet
