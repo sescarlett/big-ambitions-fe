@@ -1,5 +1,7 @@
 FROM nginx:latest
 
+ENV HOST 0.0.0.0
+
 # Copy the static HTMLs to the nginx directory
 COPY dist /usr/share/nginx/html
 
