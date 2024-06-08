@@ -61,6 +61,9 @@ jobs:
       - name: Authorize buildpack/Docker push
         run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Build, tag and push container
         id: build-image
         uses: docker/build-push-action@v3
@@ -70,9 +73,6 @@ jobs:
           push: true
           tags: |
             us-central1-docker.pkg.dev/big-ambitions-companion/scarlett-apps-images-prod/tiered-web-app-fe:${{ steps.read_property.outputs.git-commit-id-describe }}
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
 
       - name: Deploy to Cloud Run
         run: |-
