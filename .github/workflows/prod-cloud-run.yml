@@ -6,7 +6,7 @@ on:
 name: PROD Build and Deploy to Cloud Run
 env:
   REGISTRY_FOLDER_NAME: ${{ vars.REGISTRY_FOLDER_NAME }}
-  PROJECT_ID: ${{ secrets.PROJECT_ID }}
+  PROJECT_ID: ${{ vars.PROJECT_ID }}
   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
   SERVICE: tiered-web-app-fe
   CLOUD_RUN_SA: ${{ secrets.CLOUD_RUN_SA }}
