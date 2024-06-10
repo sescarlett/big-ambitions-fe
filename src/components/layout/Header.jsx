@@ -2,7 +2,7 @@
 
 import {Button, Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
-import routingUrls from "../enums/routingUrls.js";
+import routingUrls from "../../enums/routingUrls.js";
 
 const Header = () => {
     const isLoginPage = location.pathname === routingUrls.login;

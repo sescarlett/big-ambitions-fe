@@ -3,7 +3,7 @@ import axios from "axios";
 export const useApi = () => {
 
     return axios.create({
-        baseURL: import.meta.env.VITE_BASE_WS_URL,
+        baseURL: 'http://localhost:8080/api',
         headers: {
             'Content-Type': 'application/json',
         }

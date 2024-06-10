@@ -1,4 +1,4 @@
-import { LayoutProvider } from '../contexts/LayoutContext';
+import { LayoutProvider } from '../../contexts/LayoutContext.jsx';
 import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 

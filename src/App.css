@@ -35,29 +35,42 @@ html, body, #root {
 .content {
   margin-top: 30px;
   justify-self: center;
+  margin-bottom: 100px;
 }
 
 .button {
-  border-radius: 8px;
+  display: inline-block;
+  background-color: #85bb65;
+  color: whitesmoke;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #B5E61D;
-  color: #242424;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-.button:hover {
-  background-color: #a5d317;
-  border-color: #a5d317;
-  color: #242424;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
-/*.container {*/
-/*  max-width: 100%;*/
-/*}*/
+.button:hover {
+  background-color: #739c4e;
+  border-color: #739c4e;
+  color: whitesmoke;
+}
+
+.signup-link {
+  text-align: right;
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+  font-size: 0.9em;
+}
 
 @keyframes logo-spin {
   from {

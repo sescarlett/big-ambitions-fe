@@ -16,7 +16,7 @@ function Selector({ title, items, onItemSelect, buttonText, buttonDisabled, onBu
                         <p>{defaultText}</p>
                     )}
                 </ListGroup>
-                <Button variant="dark" onClick={onButtonClick} disabled={buttonDisabled}>{buttonText}</Button>
+                <Button variant="dark" className="button" onClick={onButtonClick} disabled={buttonDisabled}>{buttonText}</Button>
             </Card.Body>
         </Card>
     );
