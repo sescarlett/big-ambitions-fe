@@ -35,7 +35,7 @@ html, body, #root {
 .content {
   margin-top: 30px;
   justify-self: center;
-  margin-bottom: 100px;
+  padding-bottom: 100px;
 }
 
 .button {

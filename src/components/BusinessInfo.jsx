@@ -1,8 +1,10 @@
 import {Button, Card, Col, Container, Form, Row, Table} from "react-bootstrap";
 import {useEffect, useState} from "react";
+import ProductSelect from "./modal/ProductSelect.jsx";
 
 function BusinessInfo ({info, productList, submitFunc}) {
     const [selected, setSelected] = useState([]);
+    const [showModal, setShowModal] = useState(false);
 
     const handleUpdate = (event) => {
         event.preventDefault();
@@ -36,7 +38,8 @@ function BusinessInfo ({info, productList, submitFunc}) {
             <Card>
                 <Card.Body>
                         <Card.Title>
-                            <Button variant="dark" onClick={handleUpdate} className="button mr-2">Update</Button>
+                            {/*<Button variant="dark" onClick={handleUpdate} className="button mr-2">Update</Button>*/}
+                            <Button variant="dark" onClick={() => setShowModal(true)} className="button mr-2">Edit</Button>
                             {info?.businessName} | Capacity: {info.businessCap}
                         </Card.Title>
                     <Row>
@@ -109,6 +112,12 @@ function BusinessInfo ({info, productList, submitFunc}) {
                     </Row>
                 </Card.Body>
             </Card>
+            <ProductSelect
+                show={showModal}
+                productList={productList}
+                submitFunc={handleUpdate}
+                info={info}
+                closeFunc={() => setShowModal(false)}/>
         </Container>
     )
 }
