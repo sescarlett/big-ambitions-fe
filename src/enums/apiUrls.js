@@ -5,6 +5,7 @@ const apiUrls = {
     businessInfo: '/business/plan/',
     businessProdsUpdate: '/business/update/products/',
     businessProdsDisplays: '/business/products/list',
+    businessDisplays: '/business/displays/list/',
     businessNew: '/business/new/',
     importList: '/import/list',
     login: '/user/login',

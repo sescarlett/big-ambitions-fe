@@ -14,6 +14,7 @@ function HomePage() {
     const [gameList, setGameList] = useState([]);
     const [showGameModal, setShowGameModal] = useState(false);
     const [productList, setProductList] = useState([]);
+    const [displayList, setDisplayList] = useState([]);
     const [businessList, setBusinessList] = useState([]);
     const [businessId, setBusinessId] = useState(null);
     const [businessInfo, setBusinessInfo] = useState({});
@@ -22,11 +23,6 @@ function HomePage() {
     const [refresh, setRefresh] = useState(false);
     const { appState: { id } } = useContext(AppContext);
     const apiAddr = useApi();
-    const importRefresh = {
-        gameId: id,
-        importId: 1,
-        dayPerOrderId: 3
-    }
 
     const selectBusinessList = () => {
         apiAddr.get(apiUrls.businessList + gameId)
@@ -47,7 +43,6 @@ function HomePage() {
     }
 
     const selectImportList = (select) => {
-        console.log(select);
         apiAddr.post(apiUrls.importList, select)
             .then((res) => setImportInfo(res.data))
     }
@@ -78,7 +73,9 @@ function HomePage() {
             .then((res) => {
                 setBusinessInfo(res.data);
                 setRefresh(true);
-            })
+            });
+        apiAddr.get(apiUrls.businessDisplays + businessId)
+            .then((res) => setDisplayList(res.data));
     }
 
     useEffect(() => {
@@ -97,9 +94,10 @@ function HomePage() {
             })
         apiAddr.get(apiUrls.businessInfo + businessId)
             .then((response) => {
-                console.log(response.data)
                 setBusinessInfo(response.data);
             });
+        apiAddr.get(apiUrls.businessDisplays + businessId)
+            .then((res) => setDisplayList(res.data));
         // Retrieve gameId from session storage on component mount or refresh
         const storedBusinessId = sessionStorage.getItem('businessId');
         if (storedBusinessId) {
@@ -139,7 +137,7 @@ function HomePage() {
                 </Col>
                 <Col xs={6}>
                     {businessInfo.businessId && (
-                        <BusinessInfo info={businessInfo} productList={productList} submitFunc={handleBusinessUpdate}/>
+                        <BusinessInfo info={businessInfo} productList={productList} displayList={displayList} submitFunc={handleBusinessUpdate}/>
                     )}
                 </Col>
                 <Col>

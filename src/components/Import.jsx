@@ -23,7 +23,6 @@ function Import ({ info, submitFunc, refresh}) {
         handleUpdate();
     }, [importSelect]);
 
-    console.log(info);
     return(
         <Container>
             <Card>
