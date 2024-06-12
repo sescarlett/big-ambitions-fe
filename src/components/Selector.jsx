@@ -1,10 +1,12 @@
-import {Card, ListGroup, Button } from "react-bootstrap";
+import {Card, ListGroup, Button, Pagination} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
 
 function Selector({ title, items, onItemSelect, buttonDisabled, onButtonClick, defaultText, deleteFunc }) {
     const [hoveredItem, setHoveredItem] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 6;
 
     const handleMouseEnter = (itemId) => {
         setHoveredItem(itemId);
@@ -16,6 +18,16 @@ function Selector({ title, items, onItemSelect, buttonDisabled, onButtonClick, d
     const handleDelete = (id) => {
         deleteFunc(id);
     }
+
+    // Logic to calculate pagination
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = items.slice(indexOfFirstItem, indexOfLastItem);
+
+    // Change page
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+    console.log(currentItems)
     return (
         <Card className="mb-2">
             <Card.Body>
@@ -26,8 +38,8 @@ function Selector({ title, items, onItemSelect, buttonDisabled, onButtonClick, d
                     {title}
                 </Card.Title>
                 <ListGroup defaultActiveKey="#link1" className="mb-2">
-                    {items.length > 0 ? (
-                        items.map((item) => (
+                    {currentItems.length > 0 ? (
+                        currentItems.map((item) => (
                             <div
                                 key={item.id}
                                 className="box-div"
@@ -51,7 +63,19 @@ function Selector({ title, items, onItemSelect, buttonDisabled, onButtonClick, d
                         <p>{defaultText}</p>
                     )}
                 </ListGroup>
-                {/*<Button variant="dark" className="button" onClick={onButtonClick} disabled={buttonDisabled}>{buttonText}</Button>*/}
+                { items.length > 6 &&
+                    <Pagination className="custom-pagination">
+                    {Array.from({length: Math.ceil(items.length / itemsPerPage)}, (_, i) => (
+                        <Pagination.Item
+                            key={i + 1}
+                            active={i + 1 === currentPage}
+                            onClick={() => paginate(i + 1)}
+                        >
+                            {i + 1}
+                        </Pagination.Item>
+                    ))}
+                </Pagination>
+                }
             </Card.Body>
         </Card>
     );
