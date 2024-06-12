@@ -3,12 +3,12 @@ import {createContext, useEffect, useMemo, useState} from 'react';
 /** @typedef {import ('../../mono-repo-globals/@types/jsdoc.d.js').AppContextValue} AppContextValue */
 
 const AppContext = createContext({
-    appState: { id: undefined },
+    appState: { id: undefined, gameIdGlobal: undefined },
     setAppState: () => { },
 });
 
 function AppContextProvider({ children }) {
-    const [appState, setAppState] = useState(() => ({ id: undefined }));
+    const [appState, setAppState] = useState(() => ({ id: undefined,  gameIdGlobal: undefined }));
     const contextState = useMemo(
         () => ({
             // app state

@@ -3,9 +3,9 @@ import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../contexts/AppContextProvider.jsx";
 
 function Import ({ info, submitFunc, refresh}) {
-    const { appState: { id } } = useContext(AppContext);
+    const { appState: { gameIdGlobal } } = useContext(AppContext);
     const importRefresh = {
-        gameId: id,
+        gameId: gameIdGlobal,
         importId: 1,
         dayPerOrderId: 3
     }
@@ -16,7 +16,7 @@ function Import ({ info, submitFunc, refresh}) {
     }
 
     useEffect(() => {
-        setImportSelect(importRefresh);
+        setImportSelect(importSelect);
     }, [refresh]);
 
     useEffect(() => {

@@ -3,6 +3,8 @@ import {useApi} from "../hooks/useApi.js";
 import {Button, Card, Container, Table} from "react-bootstrap";
 import DisplayModal from "../components/modal/DisplayModal.jsx";
 import apiUrls from "../enums/apiUrls.js";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEdit, faPlus} from "@fortawesome/free-solid-svg-icons";
 
 function DisplayPage () {
     const [itemList, setItemList] = useState([]);
@@ -48,7 +50,9 @@ function DisplayPage () {
                 <Card.Body>
                     <div className="d-flex justify-content-between align-items-center">
                         <Card.Title className="mb-0">Displays</Card.Title>
-                        <Button className="ml-auto mb-2 button" onClick={newDisplay}>New</Button>
+                        <Button className="ml-auto mb-2 button" onClick={newDisplay}>
+                            <FontAwesomeIcon icon={faPlus} />
+                        </Button>
                     </div>
                     <Table striped bordered size="sm">
                         <thead>
@@ -67,7 +71,7 @@ function DisplayPage () {
                                 <td>{item.customerCap}</td>
                                 <td>
                                     <Button variant="dark" size="sm" onClick={() => editDisplay(item)}>
-                                        EDIT
+                                        <FontAwesomeIcon icon={faEdit} />
                                     </Button>
                                 </td>
                             </tr>

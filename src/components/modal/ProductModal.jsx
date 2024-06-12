@@ -16,12 +16,12 @@ function ProductModal ({show, info, submitFunc, cancelFunc}) {
         // Create a new object to hold the updated values
         const updatedEdit = { ...edit };
 
-        const quant = (edit?.volume && edit?.sumCap) ? edit.volume / ((edit.sumCap / 5) * 7) : edit?.quantity;
+        const val = (edit?.volume && edit?.sumCap) ? edit.volume / ((edit.sumCap / 5) * 7) : edit?.quantity;
 
         // Update product info
         updatedEdit.name = edit?.name; // Update with appropriate form field values
         updatedEdit.cost = edit?.cost; // Update with appropriate form field values
-        updatedEdit.quantity = quant; // Update with appropriate form field values
+        updatedEdit.value = val; // Update with appropriate form field values
 
         // Update primary display
         if (primaryDisplay.id) {

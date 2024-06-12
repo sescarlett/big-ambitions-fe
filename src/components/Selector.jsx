@@ -1,10 +1,17 @@
 import { Card, ListGroup, Button } from "react-bootstrap";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
 
-function Selector({ title, items, onItemSelect, buttonText, buttonDisabled, onButtonClick, defaultText }) {
+function Selector({ title, items, onItemSelect, buttonDisabled, onButtonClick, defaultText }) {
     return (
         <Card className="mb-2">
             <Card.Body>
-                <Card.Title>{title}</Card.Title>
+                <Card.Title>
+                    <Button variant="dark" className="button mr-2 large-font" onClick={onButtonClick} disabled={buttonDisabled}>
+                        <FontAwesomeIcon icon={faPlus} />
+                    </Button>
+                    {title}
+                </Card.Title>
                 <ListGroup defaultActiveKey="#link1" className="mb-2">
                     {items.length > 0 ? (
                         items.map((item) => (
@@ -16,7 +23,7 @@ function Selector({ title, items, onItemSelect, buttonText, buttonDisabled, onBu
                         <p>{defaultText}</p>
                     )}
                 </ListGroup>
-                <Button variant="dark" className="button" onClick={onButtonClick} disabled={buttonDisabled}>{buttonText}</Button>
+                {/*<Button variant="dark" className="button" onClick={onButtonClick} disabled={buttonDisabled}>{buttonText}</Button>*/}
             </Card.Body>
         </Card>
     );

@@ -21,8 +21,13 @@ function HomePage() {
     const [showBusinessModal, setShowBusinessModal] = useState(false);
     const [importInfo, setImportInfo] = useState([]);
     const [refresh, setRefresh] = useState(false);
-    const { appState: { id } } = useContext(AppContext);
+    const { appState: { id, gameIdGlobal }, setAppState } = useContext(AppContext);
     const apiAddr = useApi();
+    const importRefresh = {
+        gameId: gameIdGlobal,
+        importId: 1,
+        dayPerOrderId: 3
+    }
 
     const selectBusinessList = () => {
         apiAddr.get(apiUrls.businessList + gameId)
@@ -50,6 +55,11 @@ function HomePage() {
     const businessIdSet = (busId) => {
         setBusinessId(busId);
         sessionStorage.setItem('businessId', busId);
+    }
+
+    const gameIdSet = (gmeId) => {
+        setGameId(gmeId);
+        setAppState({gameIdGlobal: gmeId})
     }
 
     const handleNewGame = (newGame) => {
@@ -80,8 +90,10 @@ function HomePage() {
 
     useEffect(() => {
         selectBusinessList();
-        // Retrieve gameId from session storage on component mount or refresh
         const storedGameId = sessionStorage.getItem('gameId');
+        setBusinessInfo({});
+        sessionStorage.removeItem('businessId');
+        selectImportList(importRefresh);
         if (storedGameId) {
             setGameId(storedGameId);
         }
@@ -107,7 +119,6 @@ function HomePage() {
 
     useEffect(() => {
         selectGameList();
-        setRefresh(true);
     }, [id]);
 
     return (
@@ -117,7 +128,7 @@ function HomePage() {
             <Selector
                 title="Select a game"
                 items={gameList.map(game => ({ id: game.gameId, name: game.name, extraInfo: `Businesses: ${game.numBusiness}` }))}
-                onItemSelect={setGameId}
+                onItemSelect={gameIdSet}
                 buttonText="Create New Game"
                 buttonDisabled={false}
                 onButtonClick={() => setShowGameModal(true)}
