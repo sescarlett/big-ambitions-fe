@@ -4,12 +4,12 @@ import {AppContext} from "../contexts/AppContextProvider.jsx";
 
 function Import ({ info, submitFunc, refresh}) {
     const { appState: { gameIdGlobal } } = useContext(AppContext);
-    const importRefresh = {
+
+    const [importSelect, setImportSelect] = useState({
         gameId: gameIdGlobal,
         importId: 1,
         dayPerOrderId: 3
-    }
-    const [importSelect, setImportSelect] = useState({importRefresh});
+    });
 
     const handleUpdate = () => {
         submitFunc(importSelect);
@@ -20,9 +20,11 @@ function Import ({ info, submitFunc, refresh}) {
     }, [refresh]);
 
     useEffect(() => {
+        console.log(importSelect);
         handleUpdate();
     }, [importSelect]);
 
+    console.log(importSelect);
     return(
         <Container>
             <Card>

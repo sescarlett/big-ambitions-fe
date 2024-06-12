@@ -89,11 +89,22 @@ function HomePage() {
     }
 
     const deleteBusiness = (delId) => {
-        console.log(delId);
+        apiAddr.delete(apiUrls.businessDelete + delId)
+            .then(() => {
+                setBusinessInfo({});
+                selectBusinessList();
+            });
     }
 
     const deleteGame = (delId) => {
-        console.log(delId);
+        apiAddr.delete(apiUrls.gameDelete + delId)
+            .then(() => {
+                setBusinessInfo({});
+                setGameId(null);
+                selectImportList(importRefresh);
+                sessionStorage.removeItem('gameId');
+                selectGameList();
+            });
     }
 
     useEffect(() => {
