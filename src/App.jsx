@@ -7,6 +7,7 @@ import AppContextProvider from "./contexts/AppContextProvider.jsx";
 import routingUrls from "./enums/routingUrls.js";
 import DisplayPage from "./pages/DisplayPage.jsx";
 import ProductPage from "./pages/ProductPage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
 
 function App() {return (
     <AppContextProvider>
@@ -17,7 +18,7 @@ function App() {return (
                   <Route path={routingUrls.home} element={<HomePage />} />
                   <Route path={routingUrls.product} element={<ProductPage />} />
                   <Route path={routingUrls.display} element={<DisplayPage />} />
-                  {/*<Route path={routingUrls.profile} element={<ProfilePage />} />*/}
+                  <Route path={routingUrls.profile} element={<ProfilePage />} />
               </Routes>
           </AppLayout>
       </Router>
