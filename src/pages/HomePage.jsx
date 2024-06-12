@@ -88,6 +88,14 @@ function HomePage() {
             .then((res) => setDisplayList(res.data));
     }
 
+    const deleteBusiness = (delId) => {
+        console.log(delId);
+    }
+
+    const deleteGame = (delId) => {
+        console.log(delId);
+    }
+
     useEffect(() => {
         selectBusinessList();
         const storedGameId = sessionStorage.getItem('gameId');
@@ -133,6 +141,7 @@ function HomePage() {
                 buttonDisabled={false}
                 onButtonClick={() => setShowGameModal(true)}
                 defaultText="No games available"
+                deleteFunc={deleteGame}
             />
             {gameId && (
                 <Selector
@@ -143,6 +152,7 @@ function HomePage() {
                     buttonDisabled={!gameId}
                     onButtonClick={() => setShowBusinessModal(true)}
                     defaultText={businessList.length === 0 ? "No businesses for this game" : "No game selected"}
+                    deleteFunc={deleteBusiness}
                 />
             )}
                 </Col>

@@ -12,6 +12,10 @@ html, body, #root {
   width: 100%;
 }
 
+.app-title {
+  font-family: 'Rowdies', sans-serif;
+}
+
 .header {
   /*position: fixed;*/
   top: 0;

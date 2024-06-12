@@ -1,8 +1,12 @@
-import { Card, ListGroup, Button } from "react-bootstrap";
+import {Card, ListGroup, Button, Row, Col} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {faPlus, faTimes} from "@fortawesome/free-solid-svg-icons";
 
-function Selector({ title, items, onItemSelect, buttonDisabled, onButtonClick, defaultText }) {
+function Selector({ title, items, onItemSelect, buttonDisabled, onButtonClick, defaultText, deleteFunc }) {
+
+    const handleDelete = (id) => {
+        deleteFunc(id);
+    }
     return (
         <Card className="mb-2">
             <Card.Body>
@@ -15,9 +19,22 @@ function Selector({ title, items, onItemSelect, buttonDisabled, onButtonClick, d
                 <ListGroup defaultActiveKey="#link1" className="mb-2">
                     {items.length > 0 ? (
                         items.map((item) => (
-                            <ListGroup.Item action onClick={() => onItemSelect(item.id)} key={item.id}>
-                                {item.name} {item.extraInfo}
-                            </ListGroup.Item>
+                            <div key={item.id} className="d-flex justify-content-between align-items-center">
+                                <ListGroup.Item action onClick={() => onItemSelect(item.id)} className="d-flex justify-content-between align-items-center">
+                                    <Row>
+                                        <Col>
+                                            <Row>
+                                                {item.name}
+                                            </Row>
+                                            <Row>
+                                                {item.extraInfo}
+                                            </Row>
+                                        </Col>
+                                    </Row>
+                                    <Button className="ml-2" onClick={() => handleDelete(item.id)}><FontAwesomeIcon icon={faTimes}/></Button>
+                                </ListGroup.Item>
+
+                            </div>
                         ))
                     ) : (
                         <p>{defaultText}</p>

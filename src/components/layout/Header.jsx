@@ -16,7 +16,7 @@ const Header = () => {
     return (
         <Navbar className="header">
             <Container fluid>
-                <Navbar.Brand>Big Ambitions Companion</Navbar.Brand>
+                <Navbar.Brand className="app-title">Big Ambitions Companion</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto" hidden={isLoginPage}>

@@ -15,7 +15,7 @@ function BusinessInfo ({info, productList, displayList, submitFunc}) {
         list.forEach(display => {
             total += display.quantity * display.cost;
         });
-        return total;
+        return parseInt(total);
     };
 
     useEffect( () => {
