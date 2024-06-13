@@ -14,7 +14,6 @@ function HomePage() {
     const [gameList, setGameList] = useState([]);
     const [showGameModal, setShowGameModal] = useState(false);
     const [productList, setProductList] = useState([]);
-    const [displayList, setDisplayList] = useState([]);
     const [businessList, setBusinessList] = useState([]);
     const [businessId, setBusinessId] = useState(null);
     const [businessInfo, setBusinessInfo] = useState({});
@@ -84,8 +83,6 @@ function HomePage() {
                 setBusinessInfo(res.data);
                 setRefresh(true);
             });
-        apiAddr.get(apiUrls.businessDisplays + businessId)
-            .then((res) => setDisplayList(res.data));
     }
 
     const deleteBusiness = (delId) => {
@@ -127,8 +124,6 @@ function HomePage() {
             .then((response) => {
                 setBusinessInfo(response.data);
             });
-        apiAddr.get(apiUrls.businessDisplays + businessId)
-            .then((res) => setDisplayList(res.data));
         // Retrieve gameId from session storage on component mount or refresh
         const storedBusinessId = sessionStorage.getItem('businessId');
         if (storedBusinessId) {
@@ -169,7 +164,7 @@ function HomePage() {
                 </Col>
                 <Col xs={6}>
                     {businessInfo.businessId && (
-                        <BusinessInfo info={businessInfo} productList={productList} displayList={displayList} submitFunc={handleBusinessUpdate}/>
+                        <BusinessInfo info={businessInfo} productList={productList} submitFunc={handleBusinessUpdate}/>
                     )}
                 </Col>
                 <Col>

@@ -3,7 +3,7 @@ import {useApi} from "../../hooks/useApi.js";
 import apiUrls from "../../enums/apiUrls.js";
 import {Button, Card, Col, Form, Modal, Row} from "react-bootstrap";
 
-function ProductSelect ({show, productList, displayList, submitFunc, closeFunc, info}) {
+function ProductSelect ({show, productList, submitFunc, closeFunc, info}) {
     const [selected, setSelected] = useState([]);
     const [selectedDisplay, setSelectedDisplay] = useState([]);
     const [outputSingle, setOutputSingle] = useState([]);
@@ -19,6 +19,7 @@ function ProductSelect ({show, productList, displayList, submitFunc, closeFunc, 
     const handleNext = () => {
         apiAddr.post(apiUrls.businessProdsDisplays, selected)
             .then((res) => {
+                console.log(res.data);
                 setOutputSingle(res.data.singles);
                 setInputMultiple(res.data.multiples);
                 setPageOne(false);
@@ -71,8 +72,8 @@ function ProductSelect ({show, productList, displayList, submitFunc, closeFunc, 
 
     useEffect( () => {
         setSelected(info.productList.map((product) => product.productId));
-        setSelectedDisplay(displayList);
-    }, [info, displayList]);
+        setSelectedDisplay(inputMultiple);
+    }, [info, inputMultiple]);
 
     return(
         <Modal

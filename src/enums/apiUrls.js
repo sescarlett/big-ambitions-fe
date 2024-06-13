@@ -12,6 +12,7 @@ const apiUrls = {
     importList: '/import/list',
     login: '/user/login',
     userNew: '/user/new',
+    userInfo: '/user/',
     displayUpdate: '/display/update',
     displayNew: '/display/new',
     displayList: '/display/list',

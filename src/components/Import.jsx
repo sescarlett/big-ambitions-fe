@@ -16,15 +16,17 @@ function Import ({ info, submitFunc, refresh}) {
     }
 
     useEffect(() => {
-        setImportSelect(importSelect);
+        setImportSelect({
+            gameId: gameIdGlobal,
+            importId: 1,
+            dayPerOrderId: 3
+        });
     }, [refresh]);
 
     useEffect(() => {
-        console.log(importSelect);
         handleUpdate();
     }, [importSelect]);
 
-    console.log(importSelect);
     return(
         <Container>
             <Card>
