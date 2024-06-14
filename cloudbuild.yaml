@@ -1,5 +1,24 @@
 steps:
+  # Step 1: Install dependencies
+  - name: 'gcr.io/cloud-builders/npm'
+    args: [ 'install' ]
+
+  # Step 2: Run build command (if you have one)
+  - name: 'gcr.io/cloud-builders/npm'
+    args: [ 'run', 'build' ]
+
+  # Step 3: Install Firebase CLI and deploy to Firebase
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        npm install -g firebase-tools
+        firebase deploy --project=${_PROJECT_ID}
+
   - name: gcr.io/big-ambitions-companion/firebase
-    args: ['deploy', '--project=big-ambitions-companion', '--only=hosting']
+    args: ['deploy', '--project=${_PROJECT_ID}, '--only=hosting']
 options:
   logging: CLOUD_LOGGING_ONLY
+substitutions:
+  _PROJECT_ID: 'big-ambitions-companion'
