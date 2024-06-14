@@ -17,7 +17,7 @@ steps:
         firebase deploy --project=${_PROJECT_ID}
 
   - name: gcr.io/big-ambitions-companion/firebase
-    args: ['deploy', '--project=${_PROJECT_ID}, '--only=hosting']
+    args: ['deploy', '--project=${_PROJECT_ID}', '--only=hosting']
 options:
   logging: CLOUD_LOGGING_ONLY
 substitutions:
