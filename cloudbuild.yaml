@@ -1,0 +1,3 @@
+steps:
+  - name: gcr.io/big-ambitions-companion/firebase
+    args: ['deploy', '--project=big-ambitions-companion', '--only=hosting']
