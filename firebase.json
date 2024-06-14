@@ -1,11 +1,13 @@
 {
   "hosting": {
-    "rewrites": [{
-      "source": "**",
-      "run": {
-        "serviceId": "tiered-web-app-fe",
-        "region": "us-central1"
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "tiered-web-app-fe",
+          "region": "us-central1"
+        }
       }
-    }]
+    ]
   }
 }
