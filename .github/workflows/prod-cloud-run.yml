@@ -8,7 +8,7 @@ env:
   REGISTRY_FOLDER_NAME: ${{ vars.REGISTRY_FOLDER_NAME }}
   PROJECT_ID: ${{ vars.PROJECT_ID }}
   GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-  SERVICE: tiered-web-app-fe
+  SERVICE: big-ambitions-fe
   CLOUD_RUN_SA: ${{ secrets.CLOUD_RUN_SA }}
   REACT_APP_BASE_API_URL: ${{ vars.VITE_BASE_WS_URL }}
   REGION: us-central1
