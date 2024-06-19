@@ -59,7 +59,7 @@ function DisplayPage () {
                         <tr>
                             <th>Name</th>
                             <th>Cost</th>
-                            <th>Customer Capacity</th>
+                            <th className="d-none d-sm-table-cell">Customer Capacity</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -68,7 +68,7 @@ function DisplayPage () {
                             <tr key={item.displayId}>
                                 <td>{item.name}</td>
                                 <td>{item.cost}</td>
-                                <td>{item.customerCap}</td>
+                                <td className="d-none d-sm-table-cell">{item.customerCap}</td>
                                 <td>
                                     <Button variant="dark" size="sm" onClick={() => editDisplay(item)}>
                                         <FontAwesomeIcon icon={faEdit} />

@@ -63,8 +63,8 @@ function ProductPage () {
                         <tr>
                             <th>Name</th>
                             <th>Cost</th>
-                            <th>Importer(s)</th>
-                            <th>Display(s)</th>
+                            <th className="d-none d-sm-table-cell">Importer(s)</th>
+                            <th className="d-none d-sm-table-cell">Display(s)</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -73,8 +73,8 @@ function ProductPage () {
                             <tr key={item.productId}>
                                 <td>{item.name}</td>
                                 <td>{item.cost}</td>
-                                <td>{item.importerNames}</td>
-                                <td>{item.displayNames}</td>
+                                <td className="d-none d-sm-table-cell">{item.importerNames}</td>
+                                <td className="d-none d-sm-table-cell">{item.displayNames}</td>
                                 <td>
                                     <Button variant="dark" size="sm" onClick={() => editProduct(item)}>
                                         <FontAwesomeIcon icon={faEdit} />

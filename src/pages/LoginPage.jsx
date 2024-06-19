@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
+import {Alert, Button, Card, Col, Container, Form, Row} from "react-bootstrap";
 import { useApi } from "../hooks/useApi.js";
 import apiUrls from "../enums/apiUrls.js";
 import { AppContext } from "../contexts/AppContextProvider.jsx";
@@ -10,6 +10,7 @@ import SignupModal from "../components/modal/SignupModal.jsx";
 function LoginPage() {
     const [logon, setLogon] = useState({});
     const [ showModal, setShowModal] = useState(false);
+    const [isUser, setIsUser] = useState(true);
     const { setAppState } = useContext(AppContext);
     const apiAddr = useApi();
     const navigate = useNavigate();
@@ -25,9 +26,10 @@ function LoginPage() {
             const response = await apiAddr.post(apiUrls.login, logon);
             setAppState({ id: response.data });
             sessionStorage.setItem("userId", response.data);
+            setIsUser(true);
             navigate(routingUrls.home);
         } catch (error) {
-            console.error(error);
+            setIsUser(false);
         }
     };
 
@@ -43,7 +45,7 @@ function LoginPage() {
     return (
         <Container className="container-xs">
             <Row>
-                <Col xs={4}></Col>
+                <Col md={3} xl={4}></Col>
                 <Col>
                     <Card>
                         <Row className="m-2">
@@ -81,9 +83,10 @@ function LoginPage() {
                         </Row>
                     </Card>
                 </Col>
-                <Col xs={4}></Col>
+                <Col md={3} xl={4}></Col>
             </Row>
             <SignupModal show={showModal} submitFunc={handleSubmit} cancelFunc={() => setShowModal(false)}/>
+            <Alert variant="danger" hidden={isUser}>Username/password incorrect</Alert>
         </Container>
     );
 }

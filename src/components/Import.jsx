@@ -1,10 +1,10 @@
-import {Card, Col, Container, Form, Row, Table} from "react-bootstrap";
+import {Card, Col, Form, Row, Table} from "react-bootstrap";
 import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../contexts/AppContextProvider.jsx";
 
 function Import ({ info, submitFunc, refresh}) {
     const { appState: { gameIdGlobal } } = useContext(AppContext);
-
+    const [id, setId] = useState(null);
     const [importSelect, setImportSelect] = useState({
         gameId: gameIdGlobal,
         importId: 1,
@@ -17,7 +17,7 @@ function Import ({ info, submitFunc, refresh}) {
 
     useEffect(() => {
         setImportSelect({
-            gameId: gameIdGlobal,
+            gameId: id,
             importId: 1,
             dayPerOrderId: 3
         });
@@ -27,8 +27,12 @@ function Import ({ info, submitFunc, refresh}) {
         handleUpdate();
     }, [importSelect]);
 
+    useEffect(() => {
+        setImportSelect({...importSelect, gameId: gameIdGlobal})
+        setId(gameIdGlobal);
+    }, [gameIdGlobal]);
+
     return(
-        <Container>
             <Card>
                 <Card.Body>
                     <Card.Title>Imports</Card.Title>
@@ -75,7 +79,6 @@ function Import ({ info, submitFunc, refresh}) {
                     </Row>
                 </Card.Body>
             </Card>
-        </Container>
     )
 }
 export  default Import;

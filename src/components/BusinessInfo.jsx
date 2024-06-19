@@ -1,4 +1,4 @@
-import {Button, Card, Col, Container, Row, Table} from "react-bootstrap";
+import {Button, Card, Col, Row, Table} from "react-bootstrap";
 import {useEffect, useState} from "react";
 import ProductSelect from "./modal/ProductSelect.jsx";
 
@@ -6,7 +6,6 @@ function BusinessInfo ({info, productList, submitFunc}) {
     const [showModal, setShowModal] = useState(false);
 
     const handleUpdate = (obj) => {
-        console.log(obj)
         setShowModal(false);
         submitFunc(obj);
     }
@@ -23,8 +22,7 @@ function BusinessInfo ({info, productList, submitFunc}) {
     }, [info]);
 
     return(
-        <Container>
-            <Card>
+            <Card className="mb-2">
                 <Card.Body>
                     <Card.Title>
                         <Button variant="dark" onClick={() => setShowModal(true)} className="button mr-2">Edit</Button>
@@ -83,14 +81,13 @@ function BusinessInfo ({info, productList, submitFunc}) {
                         </Col>
                     </Row>
                 </Card.Body>
+                <ProductSelect
+                    show={showModal}
+                    productList={productList}
+                    submitFunc={handleUpdate}
+                    info={info}
+                    closeFunc={() => setShowModal(false)}/>
             </Card>
-            <ProductSelect
-                show={showModal}
-                productList={productList}
-                submitFunc={handleUpdate}
-                info={info}
-                closeFunc={() => setShowModal(false)}/>
-        </Container>
     )
 }
 

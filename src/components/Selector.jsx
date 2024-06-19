@@ -27,7 +27,6 @@ function Selector({ title, items, onItemSelect, buttonDisabled, onButtonClick, d
     // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    console.log(currentItems)
     return (
         <Card className="mb-2">
             <Card.Body>

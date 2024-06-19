@@ -112,6 +112,7 @@ function HomePage() {
         selectImportList(importRefresh);
         if (storedGameId) {
             setGameId(storedGameId);
+            setAppState({gameIdGlobal: storedGameId})
         }
     }, [gameId]);
 
@@ -138,7 +139,7 @@ function HomePage() {
     return (
         <Container fluid>
             <Row>
-                <Col xs={2}>
+                <Col md={4} xl={2}>
             <Selector
                 title="Select a game"
                 items={gameList.map(game => ({ id: game.gameId, name: game.name, extraInfo: `Businesses: ${game.numBusiness}` }))}
@@ -162,7 +163,7 @@ function HomePage() {
                 />
             )}
                 </Col>
-                <Col xs={6}>
+                <Col md={8} xl={6}>
                     {businessInfo.businessId && (
                         <BusinessInfo info={businessInfo} productList={productList} submitFunc={handleBusinessUpdate}/>
                     )}

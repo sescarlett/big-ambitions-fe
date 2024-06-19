@@ -20,7 +20,6 @@ function ProfilePage () {
         selectUser();
     }, []);
 
-
     return(
         <Row>
             <Col xs={3}/>
