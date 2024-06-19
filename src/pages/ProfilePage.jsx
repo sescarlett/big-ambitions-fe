@@ -21,11 +21,11 @@ function ProfilePage () {
     }, []);
 
     return(
-        <Row>
-            <Col xs={3}/>
-            <Col>
-                <Container>
-                    <Card>
+        <Container>
+            <Row>
+                <Col sm={1} md={2}/>
+                <Col sm={10} md={8}>
+                    <Card className="card-design">
                         <Card.Body>
                             <div className="d-flex justify-content-between align-items-center">
                                 <Card.Title className="mb-0">Profile</Card.Title>
@@ -34,58 +34,63 @@ function ProfilePage () {
                                 </Button>
                             </div>
                             <Row>
-                                <Card className="ml-3">
+                                <Card className="ml-3 mb-3">
                                     <Card.Body>
-                                        <Col>
-                                            <Card.Subtitle className="mb-2">Personal Info</Card.Subtitle>
-                                            <FormLabel>First Name</FormLabel>
-                                            <FormControl
-                                                type="text"
-                                                value={details?.firstName}
-                                                className="mb-2"
-                                                onChange={(e) => setDetails({...details, firstName: e.target.value})}
-                                            />
-                                            <FormLabel>Last Name</FormLabel>
-                                            <FormControl
-                                                type="text"
-                                                value={details?.lastName}
-                                                className="mb-2"
-                                                onChange={(e) => setDetails({...details, lastName: e.target.value})}
-                                            />
-                                            <FormLabel>Email</FormLabel>
-                                            <FormControl
-                                                type="text"
-                                                value={details?.email}
-                                                className="mb-2"
-                                                onChange={(e) => setDetails({...details, email: e.target.value})}
-                                            />
-                                            <Button className="button mt-3">Save Changes</Button>
-                                        </Col>
+                                        <Card.Subtitle className="mb-2">Personal Info</Card.Subtitle>
+                                        <Row>
+                                            <Col xs={6}>
+                                                <FormLabel>First Name</FormLabel>
+                                                <FormControl
+                                                    type="text"
+                                                    value={details?.firstName}
+                                                    className="mb-2"
+                                                    onChange={(e) => setDetails({...details, firstName: e.target.value})}
+                                                />
+                                            </Col>
+                                            <Col xs={6}>
+                                                <FormLabel>Last Name</FormLabel>
+                                                <FormControl
+                                                    type="text"
+                                                    value={details?.lastName}
+                                                    className="mb-2"
+                                                    onChange={(e) => setDetails({...details, lastName: e.target.value})}
+                                                />
+                                            </Col>
+                                            <Col>
+                                                <FormLabel>Email</FormLabel>
+                                                <FormControl
+                                                    type="text"
+                                                    value={details?.email}
+                                                    className="mb-2"
+                                                    onChange={(e) => setDetails({...details, email: e.target.value})}
+                                                />
+                                                <Button className="button mt-3">Save Changes</Button>
+                                            </Col>
+                                        </Row>
                                     </Card.Body>
                                 </Card>
                                 <Col>
                                     <Card>
                                         <CardBody>
-                                            <Col className="mb-3">
-                                                <Card.Subtitle className="mb-2">Account Controls</Card.Subtitle>
-                                            </Col>
-                                            <Col xs={12}>
-                                                <Button className="button">Change Password</Button>
-                                            </Col>
-                                            <Col>
-                                                <Button className="button mt-3">Delete Account</Button>
-                                            </Col>
+                                            <Card.Subtitle className="mb-3">Account Controls</Card.Subtitle>
+                                            <Row>
+                                                <Col sm={12} md={5}>
+                                                    <Button className="button mb-2">Change Password</Button>
+                                                </Col>
+                                                <Col sm={12} md={5}>
+                                                    <Button className="button">Delete Account</Button>
+                                                </Col>
+                                            </Row>
                                         </CardBody>
                                     </Card>
                                 </Col>
                             </Row>
-
                         </Card.Body>
                     </Card>
-                </Container>
-            </Col>
-            <Col xs={3}/>
-        </Row>
+                </Col>
+                <Col sm={1}/>
+            </Row>
+        </Container>
     )
 
 }

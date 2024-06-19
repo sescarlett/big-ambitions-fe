@@ -33,14 +33,13 @@ function Import ({ info, submitFunc, refresh}) {
     }, [gameIdGlobal]);
 
     return(
-            <Card>
+            <Card className="card-design">
                 <Card.Body>
                     <Card.Title>Imports</Card.Title>
                     <Row>
                         <Col>
                         <Form className="mb-2">
                             <Form.Select
-                                size="lg"
                                 value={importSelect?.importId}
                                 onChange={(e) => setImportSelect({...importSelect, importId: e.target.value})}
                             >
@@ -50,7 +49,6 @@ function Import ({ info, submitFunc, refresh}) {
                                 <option value={4}>BlueStone Imports</option>
                             </Form.Select>
                             <Form.Select
-                                size="lg"
                                 value={importSelect?.dayPerOrderId}
                                 onChange={(e) => setImportSelect({...importSelect, dayPerOrderId: e.target.value})}
                             >

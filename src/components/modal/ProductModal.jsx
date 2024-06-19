@@ -97,7 +97,6 @@ function ProductModal ({show, info, submitFunc, cancelFunc}) {
         }
     }, [edit]);
 
-    console.log(edit)
     return(
         <Modal show={show}
                onHide={handleClose}
@@ -112,7 +111,7 @@ function ProductModal ({show, info, submitFunc, cancelFunc}) {
                     <Card.Body>
                         <Card.Subtitle>Product Info</Card.Subtitle>
                         <Row>
-                            <Col>
+                            <Col sm={12} md={6} lg={4}>
                                 <Form.Label>Name</Form.Label>
                                 <FormControl
                                     type="text"
@@ -122,7 +121,7 @@ function ProductModal ({show, info, submitFunc, cancelFunc}) {
                                     onChange={(e) => setEdit({ ...edit, name: e.target.value })}
                                 />
                             </Col>
-                            <Col xs={2}>
+                            <Col sm={4} md={6} lg={2}>
                                 <Form.Label>Cost/Unit</Form.Label>
                                 <FormControl
                                     type="text"
@@ -133,21 +132,21 @@ function ProductModal ({show, info, submitFunc, cancelFunc}) {
                                 />
                             </Col>
                             <Col>
-                                <Form.Label>Total sold per week | Total Capacity</Form.Label>
+                                <Form.Label>Total Capacity | Total sold per week</Form.Label>
                                 <InputGroup>
-                                    <FormControl
-                                        type="text"
-                                        name="value"
-                                        placeholder="ex. 450"
-                                        value={edit?.volume || ""}
-                                        onChange={(e) => setEdit({ ...edit, volume: e.target.value })}
-                                    />
                                     <FormControl
                                         type="text"
                                         name="value"
                                         placeholder="ex. 60"
                                         value={edit?.sumCap || ""}
                                         onChange={(e) => setEdit({ ...edit, sumCap: e.target.value })}
+                                    />
+                                    <FormControl
+                                        type="text"
+                                        name="value"
+                                        placeholder="ex. 450"
+                                        value={edit?.volume || ""}
+                                        onChange={(e) => setEdit({ ...edit, volume: e.target.value })}
                                     />
                                 </InputGroup>
                             </Col>
@@ -250,7 +249,7 @@ function ProductModal ({show, info, submitFunc, cancelFunc}) {
                     </Col>
                 </Row>
                 <Row className="mt-3">
-                    <Col>
+                    <Col md={12}>
                         <Card>
                             <Card.Body>
                                 <Card.Subtitle>Display #3 (Opt.)</Card.Subtitle>

@@ -22,7 +22,7 @@ function BusinessInfo ({info, productList, submitFunc}) {
     }, [info]);
 
     return(
-            <Card className="mb-2">
+            <Card className="mb-2 card-design">
                 <Card.Body>
                     <Card.Title>
                         <Button variant="dark" onClick={() => setShowModal(true)} className="button mr-2">Edit</Button>

@@ -50,7 +50,7 @@ function ProductPage () {
 
     return(
         <Container>
-            <Card>
+            <Card className="card-design">
                 <Card.Body>
                     <div className="d-flex justify-content-between align-items-center">
                         <Card.Title className="mb-0">Products</Card.Title>

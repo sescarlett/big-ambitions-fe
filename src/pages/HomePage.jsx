@@ -139,7 +139,7 @@ function HomePage() {
     return (
         <Container fluid>
             <Row>
-                <Col md={4} xl={2}>
+                <Col sm={6} md={4} lg={3} xl={2}>
             <Selector
                 title="Select a game"
                 items={gameList.map(game => ({ id: game.gameId, name: game.name, extraInfo: `Businesses: ${game.numBusiness}` }))}
@@ -163,7 +163,7 @@ function HomePage() {
                 />
             )}
                 </Col>
-                <Col md={8} xl={6}>
+                <Col sm={6} md={8} lg={6} xl={6}>
                     {businessInfo.businessId && (
                         <BusinessInfo info={businessInfo} productList={productList} submitFunc={handleBusinessUpdate}/>
                     )}

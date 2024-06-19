@@ -28,7 +28,7 @@ function Selector({ title, items, onItemSelect, buttonDisabled, onButtonClick, d
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <Card className="mb-2">
+        <Card className="mb-2 select card-design">
             <Card.Body>
                 <Card.Title>
                     <Button variant="dark" className="button mr-2 large-font" onClick={onButtonClick} disabled={buttonDisabled}>
@@ -63,7 +63,7 @@ function Selector({ title, items, onItemSelect, buttonDisabled, onButtonClick, d
                     )}
                 </ListGroup>
                 { items.length > 6 &&
-                    <Pagination className="custom-pagination">
+                    <Pagination className="custom-pagination" size="sm">
                     {Array.from({length: Math.ceil(items.length / itemsPerPage)}, (_, i) => (
                         <Pagination.Item
                             key={i + 1}
