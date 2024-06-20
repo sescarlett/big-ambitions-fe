@@ -79,6 +79,7 @@ function LoginPage() {
                                         Login
                                     </Button>
                                 </Form>
+                                <Alert variant="danger" hidden={isUser}>Username/password incorrect</Alert>
                             </Col>
                         </Row>
                     </Card>
@@ -86,7 +87,6 @@ function LoginPage() {
                 <Col md={3} xl={4}></Col>
             </Row>
             <SignupModal show={showModal} submitFunc={handleSubmit} cancelFunc={() => setShowModal(false)}/>
-            <Alert variant="danger" hidden={isUser}>Username/password incorrect</Alert>
         </Container>
     );
 }
