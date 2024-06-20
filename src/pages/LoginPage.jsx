@@ -47,7 +47,7 @@ function LoginPage() {
             <Row>
                 <Col md={3} xl={4}></Col>
                 <Col>
-                    <Card>
+                    <Card className="mb-3">
                         <Row className="m-2">
                             <Col>
                                 <h2>Welcome!</h2>
@@ -79,10 +79,10 @@ function LoginPage() {
                                         Login
                                     </Button>
                                 </Form>
-                                <Alert variant="danger" hidden={isUser}>Username/password incorrect</Alert>
                             </Col>
                         </Row>
                     </Card>
+                    <Alert variant="danger" hidden={isUser}>Username/password incorrect</Alert>
                 </Col>
                 <Col md={3} xl={4}></Col>
             </Row>
