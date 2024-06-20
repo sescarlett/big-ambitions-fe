@@ -72,14 +72,14 @@ jobs:
           context: .
           push: true
           tags: |
-            us-central1-docker.pkg.dev/big-ambitions-companion/scarlett-apps-images-prod/tiered-web-app-fe:${{ env.COMMIT_SHORT_SHA }}
+            us-central1-docker.pkg.dev/big-ambitions-companion/scarlett-apps-images-prod/big-ambitions-fe:${{ env.COMMIT_SHORT_SHA }}
 
       - name: Deploy to Cloud Run
         run: |-
           gcloud run deploy ${{ env.SERVICE }} \
             --project ${{ env.PROJECT_ID }} \
             --region ${{ env.REGION }} \
-            --image us-central1-docker.pkg.dev/big-ambitions-companion/scarlett-apps-images-prod/tiered-web-app-fe:${{ env.COMMIT_SHORT_SHA }} \
+            --image us-central1-docker.pkg.dev/big-ambitions-companion/scarlett-apps-images-prod/big-ambitions-fe:${{ env.COMMIT_SHORT_SHA }} \
             --port 80 \
             --min-instances 0 \
             --max-instances 2 \
