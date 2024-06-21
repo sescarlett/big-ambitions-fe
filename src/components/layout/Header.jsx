@@ -38,7 +38,7 @@ const Header = () => {
                         </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
-            <div className="d-none d-md-block ms-auto">
+            <div className="d-none d-md-block ms-auto" hidden={isLoginPage}>
             <Button
                 className="button"
                 variant="dark"
