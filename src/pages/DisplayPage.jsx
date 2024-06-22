@@ -49,12 +49,12 @@ function DisplayPage () {
             <Card className="card-design">
                 <Card.Body>
                     <div className="d-flex justify-content-between align-items-center">
-                        <Card.Title className="mb-0">Displays</Card.Title>
+                        <Card.Title className="mb-0 subtitle">Displays</Card.Title>
                         <Button className="ml-auto mb-2 button" onClick={newDisplay}>
                             <FontAwesomeIcon icon={faPlus} />
                         </Button>
                     </div>
-                    <Table striped bordered size="sm">
+                    <Table striped bordered size="sm" variant="secondary">
                         <thead>
                         <tr>
                             <th>Name</th>

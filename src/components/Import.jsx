@@ -33,11 +33,11 @@ function Import ({ info, submitFunc, refresh}) {
     }, [gameIdGlobal]);
 
     return(
-            <Card className="card-design">
-                <Card.Body>
-                    <Card.Title>Imports</Card.Title>
-                    <Row>
-                        <Col>
+        <Card className="card-design">
+            <Card.Body>
+                <Card.Title className="subtitle">Imports</Card.Title>
+                <Row>
+                    <Col>
                         <Form className="mb-2">
                             <Form.Select
                                 value={importSelect?.importId}
@@ -57,26 +57,31 @@ function Import ({ info, submitFunc, refresh}) {
                                 <option value={1}>One</option>
                             </Form.Select>
                         </Form>
-                            <Table striped bordered hover>
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Quantity</th>
+                        <Table striped bordered hover variant="secondary" size="sm">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Quantity</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {info.map((product) => (
+                                <tr key={product.productId}>
+                                    <td>{product.productName}</td>
+                                    <td>{product.quantity}</td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                {info.map((product) => (
-                                    <tr key={product.productId}>
-                                        <td>{product.productName}</td>
-                                        <td>{product.quantity}</td>
-                                    </tr>
-                                ))}
-                                </tbody>
-                            </Table>
-                        </Col>
-                    </Row>
-                </Card.Body>
-            </Card>
+                            ))}
+                            </tbody>
+                        </Table>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <p>*These are estimates to assist with initial setup in imports. Adjust your order according to your needs.</p>
+                    </Col>
+                </Row>
+            </Card.Body>
+        </Card>
     )
 }
 export  default Import;

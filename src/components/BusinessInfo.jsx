@@ -24,14 +24,14 @@ function BusinessInfo ({info, productList, submitFunc}) {
     return(
             <Card className="mb-2 card-design">
                 <Card.Body>
-                    <Card.Title>
+                    <Card.Title className="subtitle">
                         <Button variant="dark" onClick={() => setShowModal(true)} className="button mr-2">Edit</Button>
                         {info?.businessName} | Capacity: {info.businessCap}
                     </Card.Title>
                     <Row>
                         <Col>
-                            <Card.Subtitle>Products & Minimum Inventory</Card.Subtitle>
-                            <Table striped bordered hover>
+                            <Card.Subtitle className="mb-2 subtitle">Products & Minimum Inventory</Card.Subtitle>
+                            <Table striped bordered hover variant="secondary" size="sm">
                                 <thead>
                                 <tr>
                                     <th>Name</th>
@@ -53,10 +53,15 @@ function BusinessInfo ({info, productList, submitFunc}) {
                                 </tr>
                                 </tbody>
                             </Table>
+                            <Row>
+                                <Col>
+                                    <p>*Prices based on costs from wholesalers.</p>
+                                </Col>
+                            </Row>
                         </Col>
                         <Col>
-                            <Card.Subtitle>Displays</Card.Subtitle>
-                            <Table striped bordered hover>
+                            <Card.Subtitle className="mb-2 subtitle">Displays</Card.Subtitle>
+                            <Table striped bordered hover variant="secondary" size="sm">
                                 <thead>
                                 <tr>
                                     <th>Name</th>

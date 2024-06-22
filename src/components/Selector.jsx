@@ -30,7 +30,7 @@ function Selector({ title, items, onItemSelect, buttonDisabled, onButtonClick, d
     return (
         <Card className="mb-2 select card-design">
             <Card.Body>
-                <Card.Title>
+                <Card.Title className="subtitle">
                     <Button variant="dark" className="button mr-2 large-font" onClick={onButtonClick} disabled={buttonDisabled}>
                         <FontAwesomeIcon icon={faPlus} />
                     </Button>

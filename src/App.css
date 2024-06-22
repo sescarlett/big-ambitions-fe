@@ -26,7 +26,7 @@ html, body, #root {
 }
 
 .card-design {
-  background-color: whitesmoke;
+  background-color: rgba(193, 202, 209, .5);
 }
 
 .header {
@@ -40,6 +40,10 @@ html, body, #root {
 
 .nav-items {
   color: whitesmoke!important;
+}
+
+.subtitle {
+  color: whitesmoke;
 }
 
 .footer {
@@ -87,7 +91,7 @@ html, body, #root {
 }
 
 .button-danger {
-  background-color: lightgrey;
+  background-color: rgba(193, 202, 209, 0);
   border-color: lightgrey;
   color: #626262;
   font-weight: 400;
@@ -108,7 +112,7 @@ html, body, #root {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem; /* Adjust padding as needed */
-  background-color: whitesmoke; /* Add a background color to see the box */
+  background-color: rgba(193, 202, 209, 0); /* Add a background color to see the box */
   flex: 1; /* Ensure the box takes up available space */
 }
 

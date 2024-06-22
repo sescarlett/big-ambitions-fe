@@ -38,11 +38,12 @@ const Header = () => {
                         </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
-            <div className="d-none d-md-block ms-auto" hidden={isLoginPage}>
+            <div className="d-none d-md-block ms-auto" >
             <Button
                 className="button"
                 variant="dark"
                 onClick={handleLogout}
+                hidden={isLoginPage}
             >Logout
             </Button>
             </div>

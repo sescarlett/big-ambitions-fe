@@ -53,12 +53,12 @@ function ProductPage () {
             <Card className="card-design">
                 <Card.Body>
                     <div className="d-flex justify-content-between align-items-center">
-                        <Card.Title className="mb-0">Products</Card.Title>
+                        <Card.Title className="mb-0 subtitle">Products</Card.Title>
                         <Button className="ml-auto mb-2 button" onClick={() => newProduct(emptyItem)}>
                             <FontAwesomeIcon icon={faPlus} />
                         </Button>
                     </div>
-                    <Table striped bordered size="sm">
+                    <Table striped bordered size="sm" variant="secondary">
                         <thead>
                         <tr>
                             <th>Name</th>

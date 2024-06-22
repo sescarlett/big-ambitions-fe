@@ -28,7 +28,7 @@ function ProfilePage () {
                     <Card className="card-design">
                         <Card.Body>
                             <div className="d-flex justify-content-between align-items-center">
-                                <Card.Title className="mb-0">Profile</Card.Title>
+                                <Card.Title className="mb-0 subtitle">Profile</Card.Title>
                                 <Button className="ml-auto mb-2 button" onClick={selectUser}>
                                     <FontAwesomeIcon icon={faPlus} />
                                 </Button>
