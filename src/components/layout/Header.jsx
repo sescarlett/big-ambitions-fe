@@ -14,7 +14,7 @@ const Header = () => {
     }
 
     return (
-        <Navbar expand="md">
+        <Navbar expand="md" className="header">
                 <Navbar.Brand className="app-title" href="/home">Big Ambitions Companion</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

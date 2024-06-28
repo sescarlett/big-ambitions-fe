@@ -55,7 +55,7 @@ function BusinessInfo ({info, productList, submitFunc}) {
                             </Table>
                             <Row>
                                 <Col>
-                                    <p>*Prices based on costs from wholesalers.</p>
+                                    <p className="card-text">* Prices based on costs from wholesalers.</p>
                                 </Col>
                             </Row>
                         </Col>

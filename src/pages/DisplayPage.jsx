@@ -51,7 +51,7 @@ function DisplayPage () {
                     <div className="d-flex justify-content-between align-items-center">
                         <Card.Title className="mb-0 subtitle">Displays</Card.Title>
                         <Button className="ml-auto mb-2 button" onClick={newDisplay}>
-                            <FontAwesomeIcon icon={faPlus} />
+                            <FontAwesomeIcon icon={faPlus} /> New Display
                         </Button>
                     </div>
                     <Table striped bordered size="sm" variant="secondary">

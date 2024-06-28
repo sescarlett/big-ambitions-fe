@@ -77,7 +77,7 @@ function Import ({ info, submitFunc, refresh}) {
                 </Row>
                 <Row>
                     <Col>
-                        <p>*These are estimates to assist with initial setup in imports. Adjust your order according to your needs.</p>
+                        <p className="card-text">* These are estimates to assist with initial setup in imports. Adjust your order according to your needs.</p>
                     </Col>
                 </Row>
             </Card.Body>

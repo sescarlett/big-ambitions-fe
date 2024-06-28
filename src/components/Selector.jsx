@@ -28,7 +28,7 @@ function Selector({ title, items, onItemSelect, buttonDisabled, onButtonClick, d
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
-        <Card className="mb-2 select card-design">
+        <Card className="mb-2 select card-design card-text">
             <Card.Body>
                 <Card.Title className="subtitle">
                     <Button variant="dark" className="button mr-2 large-font" onClick={onButtonClick} disabled={buttonDisabled}>
