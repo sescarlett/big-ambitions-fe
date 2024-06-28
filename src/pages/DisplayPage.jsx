@@ -5,17 +5,17 @@ import DisplayModal from "../components/modal/DisplayModal.jsx";
 import apiUrls from "../enums/apiUrls.js";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlus} from "@fortawesome/free-solid-svg-icons";
-import {AppContext} from "../contexts/AppContextProvider.jsx";
 import {useNavigate} from "react-router-dom";
 import routingUrls from "../enums/routingUrls.js";
+import {AppContext} from "../contexts/AppContextProvider.jsx";
 
 function DisplayPage () {
     const [itemList, setItemList] = useState([]);
     const [itemDetail, setItemDetail] = useState({});
     const emptyItem = {displayId: '', name: '', cost: '', customerCap: ''}
     const [showModal, setShowModal] = useState(false);
+    const { appState: {isLoggedIn} } = useContext(AppContext);
     const apiAddr = useApi();
-    const { appState: { isLoggedIn } } = useContext(AppContext);
     const navigate = useNavigate();
 
     const handleSubmit = (displayOut) => {

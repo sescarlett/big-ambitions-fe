@@ -22,7 +22,7 @@ function HomePage() {
     const [showBusinessModal, setShowBusinessModal] = useState(false);
     const [importInfo, setImportInfo] = useState([]);
     const [refresh, setRefresh] = useState(false);
-    const { appState: { id, gameIdGlobal, isLoggedIn }, setAppState } = useContext(AppContext);
+    const { appState: { id, gameIdGlobal, isLoggedIn}, setAppState } = useContext(AppContext);
     const apiAddr = useApi();
     const navigate = useNavigate();
     const importRefresh = {

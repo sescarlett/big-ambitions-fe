@@ -1,18 +1,18 @@
 import {Button, Card, CardBody, Col, Container, FormControl, FormLabel, Row} from "react-bootstrap";
 import {useContext, useEffect, useState} from "react";
-import {AppContext} from "../contexts/AppContextProvider.jsx";
 import {useApi} from "../hooks/useApi.js";
 import apiUrls from "../enums/apiUrls.js";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {useNavigate} from "react-router-dom";
 import routingUrls from "../enums/routingUrls.js";
+import {AppContext} from "../contexts/AppContextProvider.jsx";
 
 function ProfilePage () {
     const [details, setDetails] = useState({});
-    const { appState: { id, isLoggedIn }} = useContext(AppContext);
     const navigate = useNavigate();
     const apiAddr = useApi();
+    const { appState: {isLoggedIn, id} } = useContext(AppContext);
 
     const selectUser = () => {
         apiAddr.get(apiUrls.userInfo + id)

@@ -1,35 +1,34 @@
-import {createContext, useEffect, useMemo, useState} from 'react';
+import {createContext, useMemo, useState} from 'react';
 
 /** @typedef {import ('../../mono-repo-globals/@types/jsdoc.d.js').AppContextValue} AppContextValue */
 
 const AppContext = createContext({
-    appState: { id: undefined, gameIdGlobal: undefined, isLoggedIn: false },
-    setAppState: () => { },
+    appState: {
+        id: undefined,
+        gameIdGlobal: undefined,
+        isLoggedIn: undefined,
+    },
+    setAppState: () => {},
 });
 
 function AppContextProvider({ children }) {
-    const [appState, setAppState] = useState(() => ({ id: undefined,  gameIdGlobal: undefined, isLoggedIn: false }));
-    const contextState = useMemo(
+    const [appState, setAppState] = useState({
+        id: sessionStorage.getItem('userId') || undefined,
+        gameIdGlobal: undefined,
+        isLoggedIn: sessionStorage.getItem('isLoggedIn') || undefined ,
+    });
+
+    // Memoize the context value to avoid unnecessary re-renders
+    const contextValue = useMemo(
         () => ({
-            // app state
             appState,
             setAppState,
         }),
         [appState, setAppState]
     );
 
-    useEffect(() => {
-        // Load the ID from sessionStorage
-        const storedId = sessionStorage.getItem('userId');
-
-        if (storedId) {
-            // If ID is found in sessionStorage, update the app state with it
-            setAppState({ id: storedId });
-        }
-    }, []);
-
     return (
-        <AppContext.Provider value={contextState}>
+        <AppContext.Provider value={contextValue}>
             {children}
         </AppContext.Provider>
     );

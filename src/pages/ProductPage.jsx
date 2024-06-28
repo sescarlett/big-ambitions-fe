@@ -5,16 +5,16 @@ import apiUrls from "../enums/apiUrls.js";
 import ProductModal from "../components/modal/ProductModal.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlus} from "@fortawesome/free-solid-svg-icons";
-import {AppContext} from "../contexts/AppContextProvider.jsx";
 import {useNavigate} from "react-router-dom";
 import routingUrls from "../enums/routingUrls.js";
+import {AppContext} from "../contexts/AppContextProvider.jsx";
 
 function ProductPage () {
     const [itemList, setItemList] = useState([]);
     const [itemDetail, setItemDetail] = useState({});
     const [showModal, setShowModal] = useState(false);
+    const { appState: {isLoggedIn} } = useContext(AppContext);
     const apiAddr = useApi();
-    const { appState: { isLoggedIn } } = useContext(AppContext);
     const navigate = useNavigate();
     const emptyItem = {
         productId: '',
