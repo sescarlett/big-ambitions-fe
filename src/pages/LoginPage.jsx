@@ -24,10 +24,9 @@ function LoginPage() {
         event.preventDefault();
         try {
             const response = await apiAddr.post(apiUrls.login, logon);
-            setAppState({ id: response.data });
+            setAppState({ id: response.data, isLoggedIn: true });
             sessionStorage.setItem("userId", response.data);
             setIsUser(true);
-            setAppState({isLoggedIn: true})
             navigate(routingUrls.home);
         } catch (error) {
             setIsUser(false);

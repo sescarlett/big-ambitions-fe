@@ -3,7 +3,7 @@ import {createContext, useEffect, useMemo, useState} from 'react';
 /** @typedef {import ('../../mono-repo-globals/@types/jsdoc.d.js').AppContextValue} AppContextValue */
 
 const AppContext = createContext({
-    appState: { id: undefined, gameIdGlobal: undefined },
+    appState: { id: undefined, gameIdGlobal: undefined, isLoggedIn: false },
     setAppState: () => { },
 });
 
