@@ -27,6 +27,7 @@ function LoginPage() {
             setAppState({ id: response.data });
             sessionStorage.setItem("userId", response.data);
             setIsUser(true);
+            setAppState({isLoggedIn: true})
             navigate(routingUrls.home);
         } catch (error) {
             setIsUser(false);

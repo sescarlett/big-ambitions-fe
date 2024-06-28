@@ -8,7 +8,7 @@ const AppContext = createContext({
 });
 
 function AppContextProvider({ children }) {
-    const [appState, setAppState] = useState(() => ({ id: undefined,  gameIdGlobal: undefined }));
+    const [appState, setAppState] = useState(() => ({ id: undefined,  gameIdGlobal: undefined, isLoggedIn: false }));
     const contextState = useMemo(
         () => ({
             // app state

@@ -9,21 +9,24 @@ import DisplayPage from "./pages/DisplayPage.jsx";
 import ProductPage from "./pages/ProductPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 
-function App() {return (
-    <AppContextProvider>
-      <Router>
-          <AppLayout>
-              <Routes>
-                  <Route path={routingUrls.login} element={<LoginPage />} />
-                  <Route path={routingUrls.home} element={<HomePage />} />
-                  <Route path={routingUrls.product} element={<ProductPage />} />
-                  <Route path={routingUrls.display} element={<DisplayPage />} />
-                  <Route path={routingUrls.profile} element={<ProfilePage />} />
-              </Routes>
-          </AppLayout>
-      </Router>
-    </AppContextProvider>
-  )
+function App() {
+
+    return (
+        <AppContextProvider>
+            <Router>
+                <AppLayout>
+                    <Routes>
+                        <Route path="*" element={<LoginPage />} />
+                        <Route path={routingUrls.login} element={<LoginPage />} />
+                        <Route path={routingUrls.home} element={<HomePage />} />
+                        <Route path={routingUrls.product} element={<ProductPage />} />
+                        <Route path={routingUrls.display} element={<DisplayPage />} />
+                        <Route path={routingUrls.profile} element={<ProfilePage />} />
+                    </Routes>
+                </AppLayout>
+            </Router>
+        </AppContextProvider>
+    )
 }
 
 export default App

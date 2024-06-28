@@ -5,10 +5,13 @@ import {useApi} from "../hooks/useApi.js";
 import apiUrls from "../enums/apiUrls.js";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {useNavigate} from "react-router-dom";
+import routingUrls from "../enums/routingUrls.js";
 
 function ProfilePage () {
     const [details, setDetails] = useState({});
-    const { appState: { id }} = useContext(AppContext);
+    const { appState: { id, isLoggedIn }} = useContext(AppContext);
+    const navigate = useNavigate();
     const apiAddr = useApi();
 
     const selectUser = () => {
@@ -18,6 +21,12 @@ function ProfilePage () {
 
     useEffect(() => {
         selectUser();
+    }, []);
+
+    useEffect(() => {
+        if(!isLoggedIn) {
+            navigate(routingUrls.login);
+        }
     }, []);
 
     return(

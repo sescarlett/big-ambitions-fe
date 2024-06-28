@@ -8,6 +8,8 @@ import BusinessInfo from "../components/BusinessInfo.jsx";
 import Import from "../components/Import.jsx";
 import GameModal from "../components/modal/GameModal.jsx";
 import BusinessModal from "../components/modal/BusinessModal.jsx";
+import routingUrls from "../enums/routingUrls.js";
+import {useNavigate} from "react-router-dom";
 
 function HomePage() {
     const [gameId, setGameId] = useState(null);
@@ -20,8 +22,9 @@ function HomePage() {
     const [showBusinessModal, setShowBusinessModal] = useState(false);
     const [importInfo, setImportInfo] = useState([]);
     const [refresh, setRefresh] = useState(false);
-    const { appState: { id, gameIdGlobal }, setAppState } = useContext(AppContext);
+    const { appState: { id, gameIdGlobal, isLoggedIn }, setAppState } = useContext(AppContext);
     const apiAddr = useApi();
+    const navigate = useNavigate();
     const importRefresh = {
         gameId: gameIdGlobal,
         importId: 1,
@@ -135,6 +138,12 @@ function HomePage() {
     useEffect(() => {
         selectGameList();
     }, [id]);
+
+    useEffect(() => {
+        if(!isLoggedIn) {
+            navigate(routingUrls.login);
+        }
+    }, []);
 
     return (
         <Container fluid>

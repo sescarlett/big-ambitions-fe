@@ -1,10 +1,13 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useApi} from "../hooks/useApi.js";
 import {Button, Card, Container, Table} from "react-bootstrap";
 import DisplayModal from "../components/modal/DisplayModal.jsx";
 import apiUrls from "../enums/apiUrls.js";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlus} from "@fortawesome/free-solid-svg-icons";
+import {AppContext} from "../contexts/AppContextProvider.jsx";
+import {useNavigate} from "react-router-dom";
+import routingUrls from "../enums/routingUrls.js";
 
 function DisplayPage () {
     const [itemList, setItemList] = useState([]);
@@ -12,6 +15,8 @@ function DisplayPage () {
     const emptyItem = {displayId: '', name: '', cost: '', customerCap: ''}
     const [showModal, setShowModal] = useState(false);
     const apiAddr = useApi();
+    const { appState: { isLoggedIn } } = useContext(AppContext);
+    const navigate = useNavigate();
 
     const handleSubmit = (displayOut) => {
         if(displayOut.displayId) {
@@ -42,6 +47,12 @@ function DisplayPage () {
 
     useEffect(() => {
         selectDisplayList();
+    }, []);
+
+    useEffect(() => {
+        if(!isLoggedIn) {
+            navigate(routingUrls.login);
+        }
     }, []);
 
     return(

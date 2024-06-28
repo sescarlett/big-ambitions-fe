@@ -1,16 +1,21 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {useApi} from "../hooks/useApi.js";
 import {Button, Card, Container, Table} from "react-bootstrap";
 import apiUrls from "../enums/apiUrls.js";
 import ProductModal from "../components/modal/ProductModal.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faPlus} from "@fortawesome/free-solid-svg-icons";
+import {AppContext} from "../contexts/AppContextProvider.jsx";
+import {useNavigate} from "react-router-dom";
+import routingUrls from "../enums/routingUrls.js";
 
 function ProductPage () {
     const [itemList, setItemList] = useState([]);
     const [itemDetail, setItemDetail] = useState({});
     const [showModal, setShowModal] = useState(false);
     const apiAddr = useApi();
+    const { appState: { isLoggedIn } } = useContext(AppContext);
+    const navigate = useNavigate();
     const emptyItem = {
         productId: '',
         name: '',
@@ -46,6 +51,12 @@ function ProductPage () {
 
     useEffect(() => {
         selectProductList();
+    }, []);
+
+    useEffect(() => {
+        if(!isLoggedIn) {
+            navigate(routingUrls.login);
+        }
     }, []);
 
     return(
